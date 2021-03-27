@@ -4,7 +4,7 @@ import ResturantData from "./restaurants.json";
 import cuisines from "./cuisines.json";
 import MainModule from "./MainModule";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {DropdownButton,Dropdown} from 'react-bootstrap'
+
 function App() {
   const [SearchData, setSearchData] = useState("");
   const [Input, setInput] = useState([""]);
