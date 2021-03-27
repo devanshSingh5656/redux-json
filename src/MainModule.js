@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Button } from "react-bootstrap";
 import "./Display.css";
 
 function MainModule({ SearchData, Input }) {
   const dispatch = useDispatch();
+  const [data, setdata] = useState()
 
   const resturant = useSelector((state) => state.Resturant);
   const MainData = useSelector((state) => state.MainData);
@@ -17,17 +18,32 @@ function MainModule({ SearchData, Input }) {
   });
   useEffect(() => {
     CategoryFillter();
+ 
+    
   }, [Input]);
   const CategoryFillter = () => {
     let data = [];
+    let data1;
+    var result;
+    var maparr;
     Input.map((res, id) => {
       Category.map((res1, id1) => {
         if (res1.name === res) {
           data = [...data, ...res1.restaurants];
+          console.log(data);
+          data1=data.map(item=>{
+            return [item.id,item]
+          })
+
+         
+
         }
       });
     });
-    dispatch({ type: "MAIN_DATA", item: data });
+    maparr=new Map(data1)
+    result=[...maparr.values()];
+    console.log(result);
+    dispatch({ type: "MAIN_DATA", item: result });
   };
 
   return (
