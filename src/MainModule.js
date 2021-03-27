@@ -48,7 +48,8 @@ function MainModule({ SearchData, Input }) {
           ? filteredProducts.map((data, i) => (
               <div key={i} className="">
                 <Card style={{ width: "20rem" }}>
-                <Card.Img variant="top" src='https://hyperlocal.cartlabs.com/storage/app/public/210/banner6.jpg' />
+                <Card.Img variant="top" src={data.media[0]?.url} />
+               
 
                 
                   <Card.Body>
